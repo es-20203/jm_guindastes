@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  price: 9.99
+  data: 2020-10-08 02:41:53
+  driver: one
+  client: one
+  vehicle: one
+
+two:
+  status: MyString
+  price: 9.99
+  data: 2020-10-08 02:41:53
+  driver: two
+  client: two
+  vehicle: two

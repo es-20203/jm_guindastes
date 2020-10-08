@@ -1,0 +1,84 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2020_10_08_054153) do
+
+  create_table "adresses", force: :cascade do |t|
+    t.string "street"
+    t.string "neighborhood"
+    t.string "zipcode"
+    t.string "number"
+    t.string "city"
+    t.integer "client_id", null: false
+    t.integer "driver_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_adresses_on_client_id"
+    t.index ["driver_id"], name: "index_adresses_on_driver_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "cpf_cnpj"
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "drivers", force: :cascade do |t|
+    t.string "name"
+    t.string "cpf"
+    t.string "cnh"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string "phone_number"
+    t.integer "driver_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_phones_on_client_id"
+    t.index ["driver_id"], name: "index_phones_on_driver_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "status"
+    t.decimal "price"
+    t.datetime "data"
+    t.integer "driver_id", null: false
+    t.integer "client_id", null: false
+    t.integer "vehicle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_services_on_client_id"
+    t.index ["driver_id"], name: "index_services_on_driver_id"
+    t.index ["vehicle_id"], name: "index_services_on_vehicle_id"
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string "category"
+    t.string "board"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "adresses", "clients"
+  add_foreign_key "adresses", "drivers"
+  add_foreign_key "phones", "clients"
+  add_foreign_key "phones", "drivers"
+  add_foreign_key "services", "clients"
+  add_foreign_key "services", "drivers"
+  add_foreign_key "services", "vehicles"
+end

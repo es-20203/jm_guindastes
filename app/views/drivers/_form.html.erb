@@ -1,0 +1,66 @@
+<%= form_with(model: driver, local: true) do |form| %>
+  <% if driver.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(driver.errors.count, "error") %> prohibited this driver from being saved:</h2>
+
+      <ul>
+        <% driver.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cnh %>
+    <%= form.text_field :cnh %>
+  </div>
+
+  <%= form.fields_for :phone do |phone_field| %>
+    <div class="field">
+      <%= form.label :phone_number %>
+      <%= form.text_field :phone_number %>
+    </div>
+  <%end%>
+
+  <%= form.fields_for :address do |address_fields| %>
+    <div class="field">
+      <%= form.label :street %>
+      <%= form.text_field :street %>
+    </div>
+
+    <div class="field">
+      <%= form.label :neighborhood %>
+      <%= form.text_field :neighborhood %>
+    </div>
+
+    <div class="field">
+      <%= form.label :zipcode %>
+      <%= form.text_field :zipcode %>
+    </div>
+
+    <div class="field">
+      <%= form.label :number %>
+      <%= form.text_field :number %>
+    </div>
+
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+    </div>
+  <%end%>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
