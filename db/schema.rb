@@ -10,28 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_054153) do
+ActiveRecord::Schema.define(version: 2020_10_08_204023) do
 
-  create_table "adresses", force: :cascade do |t|
+  create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "neighborhood"
     t.string "zipcode"
     t.string "number"
     t.string "city"
-    t.integer "client_id", null: false
-    t.integer "driver_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["client_id"], name: "index_adresses_on_client_id"
-    t.index ["driver_id"], name: "index_adresses_on_driver_id"
   end
 
   create_table "clients", force: :cascade do |t|
     t.string "cpf_cnpj"
     t.string "name"
     t.string "email"
+    t.integer "address_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_clients_on_address_id"
   end
 
   create_table "drivers", force: :cascade do |t|
@@ -44,23 +42,23 @@ ActiveRecord::Schema.define(version: 2020_10_08_054153) do
 
   create_table "phones", force: :cascade do |t|
     t.string "phone_number"
-    t.integer "driver_id", null: false
     t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_phones_on_client_id"
-    t.index ["driver_id"], name: "index_phones_on_driver_id"
   end
 
   create_table "services", force: :cascade do |t|
     t.string "status"
     t.decimal "price"
     t.datetime "data"
+    t.integer "address_id", null: false
     t.integer "driver_id", null: false
     t.integer "client_id", null: false
     t.integer "vehicle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_services_on_address_id"
     t.index ["client_id"], name: "index_services_on_client_id"
     t.index ["driver_id"], name: "index_services_on_driver_id"
     t.index ["vehicle_id"], name: "index_services_on_vehicle_id"
@@ -74,10 +72,9 @@ ActiveRecord::Schema.define(version: 2020_10_08_054153) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "adresses", "clients"
-  add_foreign_key "adresses", "drivers"
+  add_foreign_key "clients", "addresses"
   add_foreign_key "phones", "clients"
-  add_foreign_key "phones", "drivers"
+  add_foreign_key "services", "addresses"
   add_foreign_key "services", "clients"
   add_foreign_key "services", "drivers"
   add_foreign_key "services", "vehicles"

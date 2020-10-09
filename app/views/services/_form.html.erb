@@ -26,7 +26,34 @@
     <%= form.datetime_select :data %>
   </div>
 
-  <div class="field">
+   <%= form.fields_for :address do |address_fields| %>
+    <div class="field">
+      <%= form.label :street %>
+      <%= form.text_field :street %>
+    </div>
+
+    <div class="field">
+      <%= form.label :neighborhood %>
+      <%= form.text_field :neighborhood %>
+    </div>
+
+    <div class="field">
+      <%= form.label :zipcode %>
+      <%= form.text_field :zipcode %>
+    </div>
+
+    <div class="field">
+      <%= form.label :number %>
+      <%= form.text_field :number %>
+    </div>
+
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+    </div>
+  <%end%>
+  
+   <div class="field">
     <%= form.label :driver_id %>
     <%= form.collection_select(:driver_id, @driver_drivers_for_select, :id, :name)%>
   </div>

@@ -14,6 +14,7 @@ class ClientsTest < ApplicationSystemTestCase
     visit clients_url
     click_on "New Client"
 
+    fill_in "Address", with: @client.address_id
     fill_in "Cpf cnpj", with: @client.cpf_cnpj
     fill_in "Email", with: @client.email
     fill_in "Name", with: @client.name
@@ -27,6 +28,7 @@ class ClientsTest < ApplicationSystemTestCase
     visit clients_url
     click_on "Edit", match: :first
 
+    fill_in "Address", with: @client.address_id
     fill_in "Cpf cnpj", with: @client.cpf_cnpj
     fill_in "Email", with: @client.email
     fill_in "Name", with: @client.name

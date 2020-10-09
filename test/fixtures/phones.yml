@@ -2,10 +2,8 @@
 
 one:
   phone_number: MyString
-  driver: one
   client: one
 
 two:
   phone_number: MyString
-  driver: two
   client: two

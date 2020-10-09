@@ -8,6 +8,7 @@
       <th>Status</th>
       <th>Price</th>
       <th>Data</th>
+      <th>Address</th>
       <th>Driver</th>
       <th>Client</th>
       <th>Vehicle</th>
@@ -15,7 +16,7 @@
     </tr>
   </thead>
 
-  <tbody>
+   <tbody>
     <% @services.each do |service| %>
       <tr>
         <td><%= service.status %></td>
@@ -23,7 +24,7 @@
         <td><%= service.data %></td>
         <td><%= service.driver.name %></td>
         <td><%= service.client.name %></td>
-        <td><%= service.vehicle.board %></td>
+        <td><%= service.vehicle.board%></td>
         <td><%= link_to 'Show', service %></td>
         <td><%= link_to 'Edit', edit_service_path(service) %></td>
         <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>

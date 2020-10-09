@@ -15,8 +15,6 @@ class DriversController < ApplicationController
   # GET /drivers/new
   def new
     @driver = Driver.new
-    @driver.build_address
-    @driver.build_phone
   end
 
   # GET /drivers/1/edit
@@ -71,8 +69,6 @@ class DriversController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def driver_params
-      params.require(:driver).permit(:name, :cpf, :cnh,
-        address_attributes: [:street, :neighborhood, :zipcode, :number, :city], 
-        phone_attributes:[:phone])
+      params.require(:driver).permit(:name, :cpf, :cnh)
     end
 end

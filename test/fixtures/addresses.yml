@@ -6,8 +6,6 @@ one:
   zipcode: MyString
   number: MyString
   city: MyString
-  client: one
-  driver: one
 
 two:
   street: MyString
@@ -15,5 +13,3 @@ two:
   zipcode: MyString
   number: MyString
   city: MyString
-  client: two
-  driver: two

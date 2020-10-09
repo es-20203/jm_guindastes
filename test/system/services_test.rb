@@ -14,6 +14,7 @@ class ServicesTest < ApplicationSystemTestCase
     visit services_url
     click_on "New Service"
 
+    fill_in "Address", with: @service.address_id
     fill_in "Client", with: @service.client_id
     fill_in "Data", with: @service.data
     fill_in "Driver", with: @service.driver_id
@@ -30,6 +31,7 @@ class ServicesTest < ApplicationSystemTestCase
     visit services_url
     click_on "Edit", match: :first
 
+    fill_in "Address", with: @service.address_id
     fill_in "Client", with: @service.client_id
     fill_in "Data", with: @service.data
     fill_in "Driver", with: @service.driver_id

@@ -69,6 +69,6 @@ class PhonesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def phone_params
-      params.require(:phone).permit(:phone_number, :driver_id, :client_id)
+      params.require(:phone).permit(:phone_number, :client_id)
     end
 end

@@ -26,12 +26,20 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
+      
     @client = Client.new(client_params)
-
+    
     respond_to do |format|
-      if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
+
+      @address = Address.new(address_params)
+      if @address.save
+        @client.address_id = @address.id
+        if @client.save
+          @phone = Phone.new(client_id: @client.id, phone_number: phone_params['phone_number'])
+          @phone.save
+          format.html { redirect_to @client, notice: 'Client was successfully created.' }
+          format.json { render :show, status: :created, location: @client }
+        end
       else
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
@@ -71,8 +79,17 @@ class ClientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:cpf_cnpj, :name, :email,
-        address_attributes: [:street, :neighborhood, :zipcode, :number, :city], 
-        phone_attributes:[:phone])
+      params.require(:client).permit(:cpf_cnpj, :name, :email, :address_id)
+        #address_attributes: [:street, :neighborhood, :zipcode, :number, :city], 
+        #phone_attributes:[:phone_number])
     end
+
+    def phone_params
+      params.require(:client).permit(:phone_number)
+    end
+
+    def address_params
+      params.require(:client).permit(:street, :neighborhood, :zipcode, :number, :city)
+    end
+
 end

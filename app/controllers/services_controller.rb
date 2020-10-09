@@ -12,12 +12,14 @@ class ServicesController < ApplicationController
   def show
   end
 
+  
   # GET /services/new
   def new
     @service = Service.new
     drivers_for_select
     clients_for_select
     vehicles_for_select
+    @service.build_address
   end
 
   # GET /services/1/edit
@@ -26,6 +28,7 @@ class ServicesController < ApplicationController
     clients_for_select
     vehicles_for_select
   end
+
 
   # POST /services
   # POST /services.json
@@ -67,6 +70,7 @@ class ServicesController < ApplicationController
     end
   end
 
+
   def drivers_for_select
     @driver_drivers_for_select = Driver.all
   end
@@ -87,7 +91,7 @@ class ServicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:status, :price, :data, :driver_id, :client_id, :vehicle_id) 
-
+      params.require(:service).permit(:status, :price, :data, :address_id, :driver_id, :client_id, :vehicle_id,
+        address_attributes: [:street, :neighborhood, :zipcode, :number, :city])
     end
 end

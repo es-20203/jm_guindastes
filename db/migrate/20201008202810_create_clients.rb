@@ -4,6 +4,7 @@ class CreateClients < ActiveRecord::Migration[6.0]
       t.string :cpf_cnpj
       t.string :name
       t.string :email
+      t.references :address, null: false, foreign_key: true
 
       t.timestamps
     end

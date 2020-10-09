@@ -15,7 +15,6 @@ class PhonesTest < ApplicationSystemTestCase
     click_on "New Phone"
 
     fill_in "Client", with: @phone.client_id
-    fill_in "Driver", with: @phone.driver_id
     fill_in "Phone number", with: @phone.phone_number
     click_on "Create Phone"
 
@@ -28,7 +27,6 @@ class PhonesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Client", with: @phone.client_id
-    fill_in "Driver", with: @phone.driver_id
     fill_in "Phone number", with: @phone.phone_number
     click_on "Update Phone"
 
