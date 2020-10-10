@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_204023) do
+ActiveRecord::Schema.define(version: 2020_10_10_202159) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -64,22 +64,6 @@ ActiveRecord::Schema.define(version: 2020_10_08_204023) do
     t.index ["vehicle_id"], name: "index_services_on_vehicle_id"
   end
 
-  create_table "vehicles", force: :cascade do |t|
-    t.string "category"
-    t.string "board"
-    t.string "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  add_foreign_key "clients", "addresses"
-  add_foreign_key "phones", "clients"
-  add_foreign_key "services", "addresses"
-  add_foreign_key "services", "clients"
-  add_foreign_key "services", "drivers"
-  add_foreign_key "services", "vehicles"
-ActiveRecord::Schema.define(version: 2020_10_10_202159) do
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -95,4 +79,18 @@ ActiveRecord::Schema.define(version: 2020_10_10_202159) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "category"
+    t.string "board"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "clients", "addresses"
+  add_foreign_key "phones", "clients"
+  add_foreign_key "services", "addresses"
+  add_foreign_key "services", "clients"
+  add_foreign_key "services", "drivers"
+  add_foreign_key "services", "vehicles"
 end
