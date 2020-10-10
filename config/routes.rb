@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :vehicles
   resources :clients
 
+  devise_for :users
   root 'welcome#index'
 end
