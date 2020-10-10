@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :services
   resources :addresses
   resources :drivers
-  resources :clients
   resources :vehicles
+  resources :clients
+
   root 'welcome#index'
 end

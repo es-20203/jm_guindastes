@@ -26,11 +26,6 @@
     <%= form.text_field :email %>
   </div>
 
-   <div class="field">
-    <%= form.label :address_id %>
-    <%= form.text_field :address_id %>
-  </div>
-
   <%= form.fields_for :phone do |phone_field| %>
     <div class="field">
       <%= form.label :phone_number %>
@@ -39,6 +34,7 @@
   <%end%>
 
   <%= form.fields_for :address do |address_fields| %>
+
     <div class="field">
       <%= form.label :street %>
       <%= form.text_field :street %>

@@ -39,10 +39,13 @@ class ClientsController < ApplicationController
           @phone.save
           format.html { redirect_to @client, notice: 'Client was successfully created.' }
           format.json { render :show, status: :created, location: @client }
+        else
+          format.html { render :new }
+          format.json { render json: @client.errors, status: :unprocessable_entity }
         end
       else
         format.html { render :new }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
       end
     end
   end

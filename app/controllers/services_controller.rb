@@ -20,6 +20,7 @@ class ServicesController < ApplicationController
     clients_for_select
     vehicles_for_select
     @service.build_address
+
   end
 
   # GET /services/1/edit
@@ -34,18 +35,25 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(service_params)
+    drivers_for_select
+    clients_for_select
+    vehicles_for_select
 
     respond_to do |format|
+      
       @address = Address.new(address_params)
       if @address.save
         @service.address_id = @address.id
         if @service.save
           format.html { redirect_to @service, notice: 'Service was successfully created.' }
           format.json { render :show, status: :created, location: @service }
+        else
+          format.html { render :new }
+          format.json { render json: @service.errors, status: :unprocessable_entity }
         end
       else
         format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,7 +81,6 @@ class ServicesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 
   def drivers_for_select
     @driver_drivers_for_select = Driver.all

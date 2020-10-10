@@ -53,14 +53,14 @@
     </div>
   <%end%>
   
-   <div class="field">
-    <%= form.label :driver_id %>
-    <%= form.collection_select(:driver_id, @driver_drivers_for_select, :id, :name)%>
-  </div>
-
   <div class="field">
     <%= form.label :client_id %>
     <%= form.collection_select(:client_id, @client_clients_for_select, :id, :name)%>
+  </div>
+
+   <div class="field">
+    <%= form.label :driver_id %>
+    <%= form.collection_select(:driver_id, @driver_drivers_for_select, :id, :name)%>
   </div>
 
   <div class="field">
