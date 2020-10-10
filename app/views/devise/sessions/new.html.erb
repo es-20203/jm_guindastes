@@ -7,6 +7,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :kind %><br />
+    <%= f.select :kind, ['ADM', 'Driver']%>  
+  </div>
+
+  <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
