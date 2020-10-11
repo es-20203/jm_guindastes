@@ -1,6 +1,6 @@
 class PhonesController < ApplicationController
   before_action :set_phone, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /phones
   # GET /phones.json
   def index
@@ -64,8 +64,7 @@ class PhonesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_phone
-       current_user = Phone.find(session[:phone_id])
-       current_user.accounts.find(params[:id])
+      @phone = Phone.where("id = ?", params[:id]).first
     end
 
     # Only allow a list of trusted parameters through.

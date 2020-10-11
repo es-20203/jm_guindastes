@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /clients
   # GET /clients.json
   def index
@@ -77,8 +77,7 @@ class ClientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
-      current_user = Client.find(session[:client_id])
-      current_user.accounts.find(params[:id])
+      @client = Client.where("id = ?", params[:id]).first
     end
 
     # Only allow a list of trusted parameters through.

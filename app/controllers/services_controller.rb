@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /services
   # GET /services.json
   def index
@@ -97,8 +97,7 @@ class ServicesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
-      current_user = Service.find(session[:service_id])
-      current_user.accounts.find(params[:id])
+      @service = Service.where("id = ?", params[:id]).first
     end
 
     # Only allow a list of trusted parameters through.
