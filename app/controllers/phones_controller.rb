@@ -64,8 +64,7 @@ class PhonesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_phone
-       current_user = Phone.find(session[:phone_id])
-       current_user.accounts.find(params[:id])
+      @phone = Phone.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -77,8 +77,7 @@ class ClientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
-      current_user = Client.find(session[:client_id])
-      current_user.accounts.find(params[:id])
+      @client = Client.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
