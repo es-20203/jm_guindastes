@@ -18,9 +18,9 @@
         <td><%= vehicle.category %></td>
         <td><%= vehicle.board %></td>
         <td><%= vehicle.status %></td>
-        <td><%= link_to 'Show', vehicle %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
-        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', vehicle, id: "s-#{vehicle.board}" %></td>
+        <td><%= link_to 'Edit', edit_vehicle_path(vehicle), id: "e-#{vehicle.board}" %></td>
+        <td><%= link_to 'Destroy', vehicle, id: "d-#{vehicle.board}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,3 +1,4 @@
+  
 <p id="notice"><%= notice %></p>
 
 <h1>Clients</h1>
@@ -20,9 +21,9 @@
         <td><%= client.name %></td>
         <td><%= client.email %></td>
         <td><%= client.address_id %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', client, id: "s-#{client.cpf_cnpj}" %></td>
+        <td><%= link_to 'Edit', edit_client_path(client), id: "e-#{client.cpf_cnpj}"%></td>
+        <td><%= link_to 'Destroy', client, id: "d-#{client.cpf_cnpj}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
