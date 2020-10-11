@@ -64,7 +64,7 @@ class PhonesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_phone
-      @phone = Phone.find(params[:id])
+      @phone = Phone.where("id = ?", params[:id]).first
     end
 
     # Only allow a list of trusted parameters through.
