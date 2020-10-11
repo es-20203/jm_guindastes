@@ -14,8 +14,8 @@ script:
   - bundle exec rake db:migrate RAILS_ENV=test
   - bundle exec rails webpacker:compile
   - bundle exec rails test test/models
-  - bundle exec cubumber features/vehicle.feature
-  - bundle exec cubumber features/client.feature
+  - bundle exec cucumber features/vehicle.feature
+  - bundle exec cucumber features/client.feature
 
 services:
   - postgresql
