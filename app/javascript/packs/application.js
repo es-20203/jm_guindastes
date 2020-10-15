@@ -3,12 +3,14 @@ import "bootstrap";
 import "src/application.scss";
 
 import "css/style.scss";
+import "css/fonts.scss";
+import "css/fonts_google.scss";
 
 
-require('bootstrap.bundle.min.js');
-require('jquery.easing.min.js');
-require('jquery.min.js');
-require('sb-admin-2.min.js');
+require('./bootstrap.bundle.min');
+require('./jquery.easing.min');
+require('./jquery.min');
+require('./sb-admin-2.min');
 
 require("@rails/ujs").start();
 require("turbolinks").start();
