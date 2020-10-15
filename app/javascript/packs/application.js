@@ -4,6 +4,7 @@ import "src/application.scss";
 
 import "css/style.scss";
 
+
 require('bootstrap.bundle.min.js');
 require('jquery.easing.min.js');
 require('jquery.min.js');
