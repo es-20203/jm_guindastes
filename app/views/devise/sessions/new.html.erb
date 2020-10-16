@@ -11,20 +11,20 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">JM Guindastes Login</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Log in</h1>
                   </div>
                   <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: ["user"]) do |f| %>
-                    <div class="field form-group">
+                    <div class="form-group">
                       <%= f.label :login %><br />
                       <%= f.text_field :login , class: ["form-control", "form-control-user"]%>
                     </div>
-                    <div class="field form-group">
+                    <div class="form-group">
                       <%= f.label :password %><br />
                       <%= f.password_field :password, class: ["form-control", "form-control-user"], autocomplete: "current-password" %>
                     </div>
 
                     <% if devise_mapping.rememberable? %>
-                      <div class="field form-group">
+                      <div class="form-group">
                         <div class= "custom-control custom-checkbox small">
                           <%= f.check_box :remember_me, class: ["custom-control-input"]%>
                           <%= f.label :remember_me, class: ["custom-control-label"]%>
@@ -49,3 +49,4 @@
       </div>
     </div>
   </div>
+</body>
