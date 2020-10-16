@@ -1,9 +1,22 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+
   test 'should save user with cpf, email, password and password_confirmation' do
     user = User.new  cpf: '12345678910', email: 'es@es.com', kind: 'Driver', password: '123456', password_confirmation: '123456'
     assert user.save
+  end
+
+  test 'should edit user' do
+    user = User.new  cpf: '12345678910', email: 'es@es.com', kind: 'Driver', password: '123456', password_confirmation: '123456'
+    user.save
+    assert user.update email: 'user_driver@gmail.com'
+  end
+
+  test 'should delete user' do
+    user = User.new  cpf: '12345678910', email: 'es@es.com', kind: 'Driver', password: '123456', password_confirmation: '123456'
+    user.save
+    assert user.delete
   end
 
   test 'should not save user with password other than password_confirmation' do
@@ -21,4 +34,5 @@ class UserTest < ActiveSupport::TestCase
     user.save
     assert_not user.update email: 'es.com'
   end
+
 end
