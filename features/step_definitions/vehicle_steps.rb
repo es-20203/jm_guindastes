@@ -1,4 +1,4 @@
-Given('I am logged in as user with cpf {string}, admin {string} and password {string}') do |cpf, kind, password|
+Given('I am logged in as user with cpf {string}, kind {string} and password {string}') do |cpf, kind, password|
     visit "/users/sign_up"
     expect(page).to have_current_path('/users/sign_up')
     fill_in 'user[cpf]', :with => cpf
