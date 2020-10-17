@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+    <script type="text/javascript">
+        window.location.href="/home/index"
+  </script>
+<% end%>
+
+<div id="wrapper">
+
+  <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+    <div id="content">
+        <%= render partial: 'dashbord/loginTopbar' %>
+
+        <div class="container-fluid">
+
+          <div class="card shadow mb-4 mt-4">
+            <div class="card-body">
+
+            </div>
+          </div>
+
+        </div>
+        <br>
+
+      <div>
+
+    <%= render partial: 'dashbord/footer' %>
+
+  <div>
+  <%= render partial: 'dashbord/logout' %>
+
+</div>
