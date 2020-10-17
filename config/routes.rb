@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   resources :phones
   resources :services
   resources :addresses
@@ -7,5 +8,6 @@ Rails.application.routes.draw do
   resources :clients
 
   devise_for :users
-  root 'welcome#index'
+  root 'welcome#index' 
+
 end
