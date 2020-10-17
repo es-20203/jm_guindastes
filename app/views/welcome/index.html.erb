@@ -16,64 +16,7 @@
 
           <div class="card shadow mb-4 mt-4">
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                            <th>Status</th>
-                            <th>Price</th>
-                            <th>Date</th>
-                            <th>Driver</th>
-                            <th>Client</th>
-                            <th>Vehicle</th>
-                            <th>Address</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                            <th>Status</th>
-                            <th>Price</th>
-                            <th>Date</th>
-                            <th>Driver</th>
-                            <th>Client</th>
-                            <th>Vehicle</th>
-                            <th>Address</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                        <% @services.each do |service| %>
-                            <tr>
-                                <td><%= service.status %></td>
-                                <td><%= service.price %></td>
-                                <td><%= service.data %></td>
-                                <td><%= service.driver.name %></td>
-                                <td><%= service.client.name %></td>
-                                <td><%= service.vehicle.board%></td>
-                                <td><%= service.address.street + " - " + service.address.number + " - " + service.address.neighborhood + " - " + service.address.city%></td>
-                                <td class="text-center"><%= link_to service, class: ["btn", "btn-info", "btn-icon-split"] do  %>
-                                    <span class = "icon text-white-30"><i class="fas fa-info-circle"></i></span><span class="text">Show</span>
-                                    <% end %>
-                                </td>
-                                <td class="text-center"><%= link_to edit_service_path(service), class: ["btn", "btn-secondary", "btn-icon-split"] do  %>
-                                    <span class = "icon text-white-30"><i class="fas fa-arrow-right"></i></span><span class="text">Edit</span>
-                                    <% end %>
-                                </td>
-                                <td class="text-center"><%= link_to service, method: :delete, data: { confirm: 'Are you sure?' } , class: ["btn", "btn-danger", "btn-icon-split"] do  %>
-                                    <span class = "icon text-white-30"><i class="fas fa-trash"></i></span>
-                                    <span class="text">Destroy</span>
-                                    <% end %>
-                                </td>
-                            </tr>
-                        <% end %>
-                        </tbody>
-                    </table>
-              </div>
+
             </div>
           </div>
 
