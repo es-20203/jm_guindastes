@@ -1,24 +1,61 @@
-<p id="notice"><%= notice %></p>
+<div id="wrapper">
+  <%= render partial: 'dashbord/dashbord' %>
 
-<p>
-  <strong>Cpf cnpj:</strong>
-  <%= @client.cpf_cnpj %>
-</p>
+  <div id="content-wrapper" class="d-flex flex-column">
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+      <!-- Main Content -->
+    <div id="content">
+        <%= render partial: 'dashbord/topbar' %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+        <div class="container-fluid">
+            <div class = "row">
+                <h1 class="h3 mb-0 text-gray-800 ml-3">Show Client</h1>
+            </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @client.address_id %>
-</p>
+            <div class="card shadow mb-4 mt-4">
+                <div class="card-body">
+                  <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+                  <p>
+                    <strong>Cpf cnpj:</strong>
+                    <%= @client.cpf_cnpj %>
+                  </p>
+
+                  <p>
+                    <strong>Name:</strong>
+                    <%= @client.name %>
+                  </p>
+
+                  <p>
+                    <strong>Email:</strong>
+                    <%= @client.email %>
+                  </p>
+
+                  <p>
+                    <strong>Address:</strong>
+                    <%= @client.address_id %>
+                  </p>
+
+                  <%= link_to edit_client_path(@client), class: ["btn", "btn-secondary", "btn-icon-split", "float-right", "ml-3"] do  %>
+                      <span class="text">Edit</span>
+                  <% end %>
+
+                  <%= link_to clients_path, class: ["btn", "btn-light", "btn-icon-split", "float-right", "ml-3"] do  %>
+                      <span class="text">Back</span>
+                  <% end %>
+                </div>
+             </div>
+        </div>
+        <br>
+      <div>
+    <%= render partial: 'dashbord/footer' %>
+  <div>
+  <%= render partial: 'dashbord/logout' %>
+</div>
+
+
+
+
+
+
+

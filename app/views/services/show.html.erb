@@ -1,39 +1,67 @@
-<p id="notice"><%= notice %></p>
+<div id="wrapper">
+  <%= render partial: 'dashbord/dashbord' %>
 
-<p>
-  <strong>Status:</strong>
-  <%= @service.status %>
-</p>
+  <div id="content-wrapper" class="d-flex flex-column">
 
-<p>
-  <strong>Price:</strong>
-  <%= @service.price %>
-</p>
+      <!-- Main Content -->
+    <div id="content">
+        <%= render partial: 'dashbord/topbar' %>
 
-<p>
-  <strong>Data:</strong>
-  <%= @service.data %>
-</p>
+        <div class="container-fluid">
+            <div class = "row">
+                <h1 class="h3 mb-0 text-gray-800 ml-3">Show Client</h1>
+            </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @service.address_id %>
-</p>
+            <div class="card shadow mb-4 mt-4">
+                <div class="card-body"><p id="notice"><%= notice %></p>
+                  <p>
+                    <strong>Status:</strong>
+                    <%= @service.status %>
+                  </p>
 
-<p>
-  <strong>Driver:</strong>
-  <%= @service.driver_id %>
-</p>
+                  <p>
+                    <strong>Price:</strong>
+                    <%= @service.price %>
+                  </p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @service.client_id %>
-</p>
+                  <p>
+                    <strong>Data:</strong>
+                    <%= @service.data %>
+                  </p>
 
-<p>
-  <strong>Vehicle:</strong>
-  <%= @service.vehicle_id %>
-</p>
+                  <p>
+                    <strong>Address:</strong>
+                    <%= @service.address_id %>
+                  </p>
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+                  <p>
+                    <strong>Driver:</strong>
+                    <%= @service.driver.name %>
+                  </p>
+
+                  <p>
+                    <strong>Client:</strong>
+                    <%= @service.client.name %>
+                  </p>
+
+                  <p>
+                    <strong>Vehicle:</strong>
+                    <%= @service.vehicle.board %>
+                  </p>
+
+                  <%= link_to edit_service_path(@service), class: ["btn", "btn-secondary", "btn-icon-split", "float-right", "ml-3"] do  %>
+                      <span class="text">Edit</span>
+                  <% end %>
+
+                  <%= link_to services_path, class: ["btn", "btn-light", "btn-icon-split", "float-right", "ml-3"] do  %>
+                      <span class="text">Back</span>
+                  <% end %>
+                </div>
+             </div>
+        </div>
+        <br>
+      <div>
+    <%= render partial: 'dashbord/footer' %>
+  <div>
+  <%= render partial: 'dashbord/logout' %>
+</div>
