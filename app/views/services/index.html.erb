@@ -27,6 +27,7 @@
                       <th>Driver</th>
                       <th>Client</th>
                       <th>Vehicle</th>
+                      <th>Address</th>
                       <th></th>
                       <th></th>
                       <th></th>
@@ -40,6 +41,7 @@
                       <th>Driver</th>
                       <th>Client</th>
                       <th>Vehicle</th>
+                      <th>Address</th>
                       <th></th>
                       <th></th>
                       <th></th>
@@ -54,6 +56,7 @@
                       <td><%= service.driver.name %></td>
                       <td><%= service.client.name %></td>
                       <td><%= service.vehicle.board%></td>
+                      <td><%= service.address.street + " - " + service.address.number + " - " + service.address.neighborhood + " - " + service.address.city%></td>
                       <td class="text-center"><%= link_to service, class: ["btn", "btn-info", "btn-icon-split"] do  %>
                         <span class = "icon text-white-30"><i class="fas fa-info-circle"></i></span><span class="text">Show</span>
                         <% end %>

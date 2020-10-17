@@ -31,7 +31,7 @@
 
                   <p>
                     <strong>Address:</strong>
-                    <%= @service.address_id %>
+                    <%= @service.address.street + " - " + @service.address.number + " - " + @service.address.neighborhood + " - " + @service.address.city %>
                   </p>
 
                   <p>

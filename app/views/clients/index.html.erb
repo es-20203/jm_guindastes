@@ -47,7 +47,7 @@
                       <td><%= client.cpf_cnpj %></td>
                       <td><%= client.name %></td>
                       <td><%= client.email %></td>
-                      <td><%= client.address_id %></td>
+                      <td><%= client.address.street + " - " + client.address.number + " - " + client.address.neighborhood + " - " + client.address.city%></td>
                       <td class="text-center"><%= link_to client, class: ["btn", "btn-info", "btn-icon-split"] do  %>
                         <span class = "icon text-white-30"><i class="fas fa-info-circle"></i></span><span class="text">Show</span>
                         <% end %>
