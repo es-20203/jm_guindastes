@@ -1,19 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div id="wrapper">
+  <%= render partial: 'dashbord/dashbord' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @driver.name %>
-</p>
+  <div id="content-wrapper" class="d-flex flex-column">
 
-<p>
-  <strong>Cpf:</strong>
-  <%= @driver.cpf %>
-</p>
+      <!-- Main Content -->
+    <div id="content">
+        <%= render partial: 'dashbord/topbar' %>
 
-<p>
-  <strong>Cnh:</strong>
-  <%= @driver.cnh %>
-</p>
+        <div class="container-fluid">
+            <div class = "row">
+                <h1 class="h3 mb-0 text-gray-800 ml-3">Show Driver</h1>
+            </div>
 
-<%= link_to 'Edit', edit_driver_path(@driver) %> |
-<%= link_to 'Back', drivers_path %>
+            <div class="card shadow mb-4 mt-4">
+                <div class="card-body">
+                  <p id="notice"><%= notice %></p>
+                    <p>
+                      <strong>Name:</strong>
+                      <%= @driver.name %>
+                    </p>
+
+                    <p>
+                      <strong>Cpf:</strong>
+                      <%= @driver.cpf %>
+                    </p>
+
+                    <p>
+                      <strong>Cnh:</strong>
+                      <%= @driver.cnh %>
+                    </p>
+                    <%= link_to edit_driver_path(@driver), class: ["btn", "btn-secondary", "btn-icon-split", "float-right", "ml-3"] do  %>
+                        <span class="text">Edit</span>
+                    <% end %>
+
+                    <%= link_to drivers_path, class: ["btn", "btn-light", "btn-icon-split", "float-right", "ml-3"] do  %>
+                        <span class="text">Back</span>
+                    <% end %>
+                </div>
+             </div>
+        </div>
+        <br>
+      <div>
+    <%= render partial: 'dashbord/footer' %>
+  <div>
+  <%= render partial: 'dashbord/logout' %>
+</div>
+
+
+
+

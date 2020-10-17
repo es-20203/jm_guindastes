@@ -10,65 +10,72 @@
       </ul>
     </div>
   <% end %>
+  <div class = "row">
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data %>
-    <%= form.datetime_select :data %>
-  </div>
-
-   <%= form.fields_for :address do |address_fields| %>
-    <div class="field">
-      <%= form.label :street %>
-      <%= form.text_field :street %>
+    <div class="form-group col-2">
+      <%= form.label :status %>
+      <%= form.text_field :status, class: ["form-control", "form-control-user"] %>
     </div>
 
-    <div class="field">
-      <%= form.label :neighborhood %>
-      <%= form.text_field :neighborhood %>
+    <div class="form-group col-2">
+      <%= form.label :price %>
+      <%= form.text_field :price, class: ["form-control", "form-control-user"] %>
     </div>
 
-    <div class="field">
-      <%= form.label :zipcode %>
-      <%= form.text_field :zipcode %>
+    <div class="form-group col-2">
+      <%= form.label :data %>
+      <%= form.datetime_local_field :data, class: ["form-control", "form-control-user"] %>
     </div>
 
-    <div class="field">
-      <%= form.label :number %>
-      <%= form.text_field :number %>
-    </div>
+    <%= form.fields_for :address do |address_fields| %>
+      <div class="form-group col-6">
+        <%= form.label :street %>
+        <%= form.text_field :street, class: ["form-control", "form-control-user"] %>
+      </div>
 
-    <div class="field">
-      <%= form.label :city %>
-      <%= form.text_field :city %>
+      <div class="form-group col-3">
+        <%= form.label :neighborhood %>
+        <%= form.text_field :neighborhood, class: ["form-control", "form-control-user"] %>
+      </div>
+
+      <div class="form-group col-3">
+        <%= form.label :zipcode %>
+        <%= form.text_field :zipcode, class: ["form-control", "form-control-user"] %>
+      </div>
+
+      <div class="form-group col-3">
+        <%= form.label :number %>
+        <%= form.text_field :number, class: ["form-control", "form-control-user"] %>
+      </div>
+
+      <div class="form-group col-3">
+        <%= form.label :city %>
+        <%= form.text_field :city, class: ["form-control", "form-control-user"] %>
+      </div>
+    <%end%>
+  </div>  
+
+  <div class="row">  
+    <div class="form-group col-4">
+      <%= form.label :client_id %>
+      <%= form.collection_select(:client_id, @client_clients_for_select, :id, :name,{},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
     </div>
-  <%end%>
   
-  <div class="field">
-    <%= form.label :client_id %>
-    <%= form.collection_select(:client_id, @client_clients_for_select, :id, :name)%>
+  
+    <div class="form-group col-4">
+      <%= form.label :driver_id %>
+      <%= form.collection_select(:driver_id, @driver_drivers_for_select, :id, :name, {},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
+    </div>
+
+    <div class="form-group col-4">
+      <%= form.label :vehicle_id %>
+      <%= form.collection_select(:vehicle_id, @vehicle_vehicles_for_select, :id, :board, {},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
+    </div>
   </div>
 
-   <div class="field">
-    <%= form.label :driver_id %>
-    <%= form.collection_select(:driver_id, @driver_drivers_for_select, :id, :name)%>
+  <div class="actions form-group ml-3 float-right">
+    <%= form.submit "Save", class: ["btn", "btn-primary", "btn-user", "btn-block"] %>
   </div>
 
-  <div class="field">
-    <%= form.label :vehicle_id %>
-    <%= form.collection_select(:vehicle_id, @vehicle_vehicles_for_select, :id, :board)%>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
