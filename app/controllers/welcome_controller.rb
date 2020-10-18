@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
     @services = nil
     @notice = ""
 
-    if !parameter.nil?
+    unless parameter.nil?
       client_id = Client.where(cpf_cnpj: parameter).first
       if !client_id.nil?
         @services = Service.where(client_id: client_id)
