@@ -8,15 +8,65 @@
 
   <div id="content-wrapper" class="d-flex flex-column">
 
-      <!-- Main Content -->
+    <!-- Main Content -->
     <div id="content">
         <%= render partial: 'dashbord/loginTopbar' %>
 
         <div class="container-fluid">
-
+            <div class = "row">
+                    <form class="d-none d-sm-inline-block form-inline navbar-search col-4">
+                        <div class="input-group">
+                            <input type="text" id ="input-search" class="form-control bg-gray-300 border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="button-search">
+                                <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
           <div class="card shadow mb-4 mt-4">
             <div class="card-body">
-
+                <div class="table-responsive mt-3">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th>Date</th>
+                                <th>Driver</th>
+                                <th>Client</th>
+                                <th>Vehicle</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th>Date</th>
+                                <th>Driver</th>
+                                <th>Client</th>
+                                <th>Vehicle</th>
+                                <th>Address</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                        <% if @services != nil%>
+                            <% @services.each do |service| %>
+                                <tr>
+                                    <td><%= service.status %></td>
+                                    <td><%= service.price %></td>
+                                    <td><%= service.data %></td>
+                                    <td><%= service.driver.name %></td>
+                                    <td><%= service.client.name %></td>
+                                    <td><%= service.vehicle.board%></td>
+                                    <td><%= service.address.street + " - " + service.address.number + " - " + service.address.neighborhood + " - " + service.address.city%></td>                                </tr>
+                            <% end %>
+                        <% end %>
+                        </tbody>
+                    </table>
+              </div>
             </div>
           </div>
 
@@ -31,3 +81,9 @@
   <%= render partial: 'dashbord/logout' %>
 
 </div>
+
+<script>
+    document.getElementById("button-search").addEventListener("click", function(){
+        location.href = "/"+ document.getElementById("input-search").value;
+    });
+</script>
