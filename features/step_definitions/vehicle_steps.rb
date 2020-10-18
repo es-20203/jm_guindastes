@@ -20,12 +20,12 @@ When('i fill board {string}, category {string}, status {string}') do |board, cat
     fill_in 'vehicle[status]', :with => status
 end       
 
-And ('i click create') do
+And ('i click create vehicle') do
     click_button 'commit'
 end
 
-Then('i see a created vehicle message') do
-    expect(page).to have_content("Vehicle was successfully created.")
+Then('i see a message that vehicle with board {string} was created') do |board|
+    expect(page).to have_content(board)
 end
 
 When ("i am on the vehicle's edit page with the board is {string}") do |board|
@@ -33,12 +33,12 @@ When ("i am on the vehicle's edit page with the board is {string}") do |board|
     click_link "e-#{board}"
 end
 
-And("i click edit") do
+And ('i click edit vehicle') do
     click_button 'commit'
 end
 
-Then("i see a updated vehicle message") do
-    expect(page).to have_content("Vehicle was successfully updated.")
+Then("i see a message that vehicle with board {string} was edited") do |board|
+    expect(page).to have_content(board)
 end
   
 Then('i see a vehicle invalid message') do
