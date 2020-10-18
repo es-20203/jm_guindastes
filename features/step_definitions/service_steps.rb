@@ -17,8 +17,8 @@ When('i fill status {string}  price {string} data {string} client {string} drive
     fill_in 'service[city]', :with => city
 end
 
-Then("i see a created service message") do
-    expect(page).to have_content("Service was successfully created.")
+Then("i see a message that service with data {string} was created") do |data|
+    expect(page).to have_content(data)
 end
 
 And('the service with status {string}  price {string} data {string} client {string} driver {string} vehicle {string} street: {string}, neighborhood: {string}, number: {string}, zipcode: {string}, city: {string} exists') do |status, price, data, client, driver, vehicle, street, neighborhood, number, zipcode, city|
@@ -43,10 +43,18 @@ When("i am on the service's edit page with the data is {string}") do |data|
     click_link "e-#{data}"
 end
 
-Then('i see a updated service message') do 
-    expect(page).to have_content("Service was successfully updated.")
+Then('i see a message that service with data {string} was edited') do |data|
+    expect(page).to have_content(data)
 end
 
 Then("i see a service invalid message") do 
     expect(page).to have_content("1 error prohibited this service from being saved:")      
+end
+
+And('i click create service') do
+    click_button 'commit'
+end
+
+And ('i click edit service') do
+    click_button 'commit'
 end
