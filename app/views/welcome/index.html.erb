@@ -11,21 +11,27 @@
     <!-- Main Content -->
     <div id="content">
         <%= render partial: 'dashbord/loginTopbar' %>
-
         <div class="container-fluid">
-            <div class = "row">
-                    <form class="d-none d-sm-inline-block form-inline navbar-search col-4">
-                        <div class="input-group">
-                            <input type="text" id ="input-search" class="form-control bg-gray-300 border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button" id="button-search">
-                                <i class="fas fa-search fa-sm"></i>
-                                </button>
+            <div class="row">
+                <form class="d-none d-sm-inline-block form-inline navbar-search col-4">
+                        <div class="card shadow mb-0">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Track your services</h6>
                             </div>
                         </div>
-                    </form>
+                        <div class="card-body shadow">
+                            <div class="input-group h-100 w-100 ">
+                                <input type="text" id ="input-search" class="form-control bg-gray-300 border-0 small" placeholder="Insert your CPF..." aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" id="button-search">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                </form>
             </div>
-          <div class="card shadow mb-4 mt-4">
+          <div class="card shadow mb-4 mt-4" id="divTable">
             <div class="card-body">
                 <div class="table-responsive mt-3">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -51,7 +57,7 @@
                                 <th>Address</th>
                             </tr>
                         </tfoot>
-                        <tbody>
+                        <tbody id="dataTable_1">
                         <% if @services != nil%>
                             <% @services.each do |service| %>
                                 <tr>
@@ -61,11 +67,12 @@
                                     <td><%= service.driver.name %></td>
                                     <td><%= service.client.name %></td>
                                     <td><%= service.vehicle.board%></td>
-                                    <td><%= service.address.street + " - " + service.address.number + " - " + service.address.neighborhood + " - " + service.address.city%></td>                                </tr>
+                                    <td><%= service.address.street + " - " + service.address.number + " - " + service.address.neighborhood + " - " + service.address.city%></td>
+                                </tr>
                             <% end %>
                         <% end %>
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -86,4 +93,13 @@
     document.getElementById("button-search").addEventListener("click", function(){
         location.href = "/"+ document.getElementById("input-search").value;
     });
+
+    let tableBody = document.getElementById("dataTable_1");
+    let line = tableBody.getElementsByTagName('tr');
+
+    if(line.length == 0){
+        document.getElementById("divTable").classList.add("d-none");
+    }
+
+
 </script>
