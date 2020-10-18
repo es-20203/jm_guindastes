@@ -33,7 +33,12 @@
 
                   <p>
                     <strong>Address:</strong>
-                    <%= @client.address_id %>
+                    <%= @client.address.street + " - " + @client.address.number + " - " + @client.address.neighborhood + " - " + @client.address.city %>
+                  </p>
+
+                  <p>
+                    <strong>Phone:</strong>
+                    <%= Phone.where(["client_id = ?", @client.id]).first.phone_number %>
                   </p>
 
                   <%= link_to edit_client_path(@client), class: ["btn", "btn-secondary", "btn-icon-split", "float-right", "ml-3"] do  %>
