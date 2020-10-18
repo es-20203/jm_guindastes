@@ -10,8 +10,8 @@ Feature:  service
         And the client cpf_cnpj '05570176454', name 'Marcos Souto', email 'marcos@gmail.com', phone '12344321', street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns' exists
 	    And i am on the service's create page
         When i fill status 'IN USE'  price '40.45' data '2020-10-11 03:52:11.076088' client 'Marcos Souto' driver 'Joao Eduardo Silva' vehicle '123456' street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns'   
-        And i click create
-        Then i see a created service message
+        And i click create service
+        Then i see a message that service with data '2020-10-11 03:52:11 UTC' was created
 
     Scenario: edit service
         Given I am logged in as user with cpf '123456789201', kind 'ADM' and password '1234567'
@@ -21,8 +21,8 @@ Feature:  service
         And the service with status 'IN USE'  price '40.45' data '2020-10-11 03:52:11.076088' client 'Marcos Souto' driver 'Joao Eduardo Silva' vehicle '123456' street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns' exists
         When i am on the service's edit page with the data is '2020-10-11 03:52:11 UTC'
         And i fill status 'FINISHED'  price '40.45' data '2020-10-11 03:52:11.076088' client 'Marcos Souto' driver 'Joao Eduardo Silva' vehicle '123456' street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns'    
-        And i click edit
-        Then i see a updated service message
+        And i click edit service
+        Then i see a message that service with data '2020-10-11 03:52:11 UTC' was edited
 
     Scenario: create service with blank status
         Given I am logged in as user with cpf '123456789201', kind 'ADM' and password '1234567'
@@ -31,7 +31,7 @@ Feature:  service
         And the client cpf_cnpj '05570176454', name 'Marcos Souto', email 'marcos@gmail.com', phone '12344321', street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns' exists
 	    And i am on the service's create page
         When i fill status ''  price '40.45' data '2020-10-11 03:52:11.076088' client 'Marcos Souto' driver 'Joao Eduardo Silva' vehicle '123456' street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns'   
-        And i click create
+        And i click create service
         Then i see a service invalid message
   
     Scenario: create service with not numeric price
@@ -41,7 +41,7 @@ Feature:  service
         And the client cpf_cnpj '05570176454', name 'Marcos Souto', email 'marcos@gmail.com', phone '12344321', street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns' exists
 	    And i am on the service's create page
         When i fill status 'IN USE'  price '45a' data '2020-10-11 03:52:11.076088' client 'Marcos Souto' driver 'Joao Eduardo Silva' vehicle '123456' street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns'   
-        And i click create
+        And i click create service
         Then i see a service invalid message
 
     Scenario: create service with negative price
@@ -49,7 +49,7 @@ Feature:  service
         And the vehicle with board '123456', category 'GUINDASTE', status 'EM USO' exist
         And the driver with name 'Joao Eduardo Silva', cpf '71246880431', cnh '27341188802' exist
         And the client cpf_cnpj '05570176454', name 'Marcos Souto', email 'marcos@gmail.com', phone '12344321', street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns' exists
-	    And i am on the service's create page
+        And i am on the service's create page
         When i fill status 'IN USE'  price '-45.24' data '2020-10-11 03:52:11.076088' client 'Marcos Souto' driver 'Joao Eduardo Silva' vehicle '123456' street: 'Rua Aaa', neighborhood: 'Centro', number: '78', zipcode: '12345678', city: 'garanhuns'   
-        And i click create
+        And i click create service
         Then i see a service invalid message    
