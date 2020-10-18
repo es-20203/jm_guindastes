@@ -4,13 +4,12 @@ class WelcomeController < ApplicationController
     @services = nil
     @notice = ""
 
-    if(parameter != nil)
+    if !parameter.nil?
       client_id = Client.where(cpf_cnpj: parameter).first
-      if(client_id != nil)
+      if !client_id.nil?
         @services = Service.where(client_id: client_id)
-        puts(@services)
       else
-        @notice = "Client not found." 
+        @notice = "Client not found."
       end
     end
   end
