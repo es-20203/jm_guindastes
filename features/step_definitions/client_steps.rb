@@ -7,12 +7,12 @@ When('i fill cpf_cnpj {string}, name {string}, email {string}, phone {string}, s
     fill_in 'client[cpf_cnpj]', :with => cpf_cnpj
     fill_in 'client[name]', :with => name
     fill_in 'client[email]', :with => email
-    fill_in 'client[phone_number]', :with => phone
-    fill_in 'client[street]', :with => street
-    fill_in 'client[neighborhood]', :with => neighborhood
-    fill_in 'client[number]', :with => number
-    fill_in 'client[zipcode]', :with => zipcode
-    fill_in 'client[city]', :with => city
+    fill_in 'client[phone_attributes][phone_number]', :with => phone
+    fill_in 'client[address_attributes][street]', :with => street
+    fill_in 'client[address_attributes][neighborhood]', :with => neighborhood
+    fill_in 'client[address_attributes][number]', :with => number
+    fill_in 'client[address_attributes][zipcode]', :with => zipcode
+    fill_in 'client[address_attributes][city]', :with => city
 end
 
 Then("i see a message that client with cpf_cnpj {string} was created") do |cpf_cnpj|
@@ -24,12 +24,12 @@ And("the client cpf_cnpj {string}, name {string}, email {string}, phone {string}
     fill_in 'client[cpf_cnpj]', :with => cpf_cnpj
     fill_in 'client[name]', :with => name
     fill_in 'client[email]', :with => email
-    fill_in 'client[phone_number]', :with => phone
-    fill_in 'client[street]', :with => street
-    fill_in 'client[neighborhood]', :with => neighborhood
-    fill_in 'client[number]', :with => number
-    fill_in 'client[zipcode]', :with => zipcode
-    fill_in 'client[city]', :with => city
+    fill_in 'client[phone_attributes][phone_number]', :with => phone
+    fill_in 'client[address_attributes][street]', :with => street
+    fill_in 'client[address_attributes][neighborhood]', :with => neighborhood
+    fill_in 'client[address_attributes][number]', :with => number
+    fill_in 'client[address_attributes][zipcode]', :with => zipcode
+    fill_in 'client[address_attributes][city]', :with => city
     click_button 'commit'
 end
 
