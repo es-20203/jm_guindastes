@@ -41,19 +41,13 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       
-      @address = Address.new(address_params)
-      if @address.save
-        @service.address_id = @address.id
-        if @service.save
-          format.html { redirect_to @service, notice: 'Service was successfully created.' }
-          format.json { render :show, status: :created, location: @service }
-        else
-          format.html { render :new }
-          format.json { render json: @service.errors, status: :unprocessable_entity }
-        end
+      if @service.save
+        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        format.json { render :show, status: :created, location: @service }
       else
+        @service.build_address
         format.html { render :new }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
+        format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -102,7 +96,7 @@ class ServicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:status, :price, :data, :address_id, :driver_id, :client_id, :vehicle_id)
+      params.require(:service).permit(:status, :price, :data, :address_id, :driver_id, :client_id, :vehicle_id, address_attributes: [:street, :neighborhood, :zipcode, :number, :city])
     end
 
     def address_params
