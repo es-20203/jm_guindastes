@@ -26,31 +26,31 @@
       <%= form.label "Date" %>
       <%= form.datetime_local_field :data, class: ["form-control", "form-control-user"] %>
     </div>
-
+  
     <%= form.fields_for :address do |address_fields| %>
       <div class="form-group col-6">
-        <%= form.label :street %>
-        <%= form.text_field :street, class: ["form-control", "form-control-user"] %>
+        <%= address_fields.label :street %>
+        <%= address_fields.text_field :street, class: ["form-control", "form-control-user"] %>
       </div>
 
       <div class="form-group col-3">
-        <%= form.label :neighborhood %>
-        <%= form.text_field :neighborhood, class: ["form-control", "form-control-user"] %>
+        <%= address_fields.label :neighborhood %>
+        <%= address_fields.text_field :neighborhood, class: ["form-control", "form-control-user"] %>
       </div>
 
       <div class="form-group col-3">
-        <%= form.label :zipcode %>
-        <%= form.text_field :zipcode, class: ["form-control", "form-control-user"] %>
+        <%= address_fields.label :zipcode %>
+        <%= address_fields.text_field :zipcode, class: ["form-control", "form-control-user"] %>
       </div>
 
       <div class="form-group col-3">
-        <%= form.label :number %>
-        <%= form.text_field :number, class: ["form-control", "form-control-user"] %>
+        <%= address_fields.label :number %>
+        <%= address_fields.text_field :number, class: ["form-control", "form-control-user"] %>
       </div>
 
       <div class="form-group col-3">
-        <%= form.label :city %>
-        <%= form.text_field :city, class: ["form-control", "form-control-user"] %>
+        <%= address_fields.label :city %>
+        <%= address_fields.text_field :city, class: ["form-control", "form-control-user"] %>
       </div>
     <%end%>
   </div>  

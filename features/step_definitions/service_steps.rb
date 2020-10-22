@@ -10,11 +10,11 @@ When('i fill status {string}  price {string} data {string} client {string} drive
     select client, :from => 'service[client_id]'
     select driver, :from => 'service[driver_id]'
     select vehicle, :from => 'service[vehicle_id]'
-    fill_in 'service[street]', :with => street
-    fill_in 'service[neighborhood]', :with => neighborhood
-    fill_in 'service[number]', :with => number
-    fill_in 'service[zipcode]', :with => zipcode
-    fill_in 'service[city]', :with => city
+    fill_in 'service[address_attributes][street]', :with => street
+    fill_in 'service[address_attributes][neighborhood]', :with => neighborhood
+    fill_in 'service[address_attributes][number]', :with => number
+    fill_in 'service[address_attributes][zipcode]', :with => zipcode
+    fill_in 'service[address_attributes][city]', :with => city
 end
 
 Then("i see a message that service with data {string} was created") do |data|
@@ -30,11 +30,11 @@ And('the service with status {string}  price {string} data {string} client {stri
     select client, :from => 'service[client_id]'
     select driver, :from => 'service[driver_id]'
     select vehicle, :from => 'service[vehicle_id]'
-    fill_in 'service[street]', :with => street
-    fill_in 'service[neighborhood]', :with => neighborhood
-    fill_in 'service[number]', :with => number
-    fill_in 'service[zipcode]', :with => zipcode
-    fill_in 'service[city]', :with => city
+    fill_in 'service[address_attributes][street]', :with => street
+    fill_in 'service[address_attributes][neighborhood]', :with => neighborhood
+    fill_in 'service[address_attributes][number]', :with => number
+    fill_in 'service[address_attributes][zipcode]', :with => zipcode
+    fill_in 'service[address_attributes][city]', :with => city
     click_button 'commit'
 end
 
