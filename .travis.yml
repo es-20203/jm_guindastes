@@ -16,6 +16,8 @@ script:
   - bundle exec rails test test/models
   - bundle exec cucumber features/vehicle.feature
   - bundle exec cucumber features/client.feature
+  - bundle exec cucumber features/driver.feature
+  - bundle exec cucumber features/service.feature
 
 services:
   - postgresql
