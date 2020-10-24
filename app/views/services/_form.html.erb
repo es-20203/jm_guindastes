@@ -14,7 +14,7 @@
 
     <div class="form-group col-2">
       <%= form.label :status %>
-      <%= form.text_field :status, class: ["form-control", "form-control-user"] %>
+      <%= form.select :status, ['On hold', 'Running','Concluded' ],{}, {class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]}%>
     </div>
 
     <div class="form-group col-2">
@@ -60,7 +60,6 @@
       <%= form.label :client_id %>
       <%= form.collection_select(:client_id, @client_clients_for_select, :id, :name,{:selected => @service.client_id},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
     </div>
-  
   
     <div class="form-group col-4">
       <%= form.label :driver_id %>

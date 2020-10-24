@@ -16,8 +16,8 @@ end
 
 When('i fill board {string}, category {string}, status {string}') do |board, category, status|
     fill_in 'vehicle[board]', :with => board
-    fill_in 'vehicle[category]', :with => category
-    fill_in 'vehicle[status]', :with => status
+    select category, :from => 'vehicle[category]'
+    select status, :from => 'vehicle[status]'
 end       
 
 And ('i click create vehicle') do
@@ -48,7 +48,7 @@ end
 And('the vehicle with board {string}, category {string}, status {string} exist') do |board, category, status|
     visit "/vehicles/new"
     fill_in 'vehicle[board]', :with => board
-    fill_in 'vehicle[category]', :with => category
-    fill_in 'vehicle[status]', :with => status
+    select category, :from => 'vehicle[category]'
+    select status, :from => 'vehicle[status]'
     click_button 'commit'
 end
