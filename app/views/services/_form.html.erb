@@ -14,7 +14,7 @@
 
     <div class="form-group col-2">
       <%= form.label :status %>
-      <%= form.text_field :status, class: ["form-control", "form-control-user"] %>
+      <%= form.select :status, ['On hold', 'Running','Concluded' ],{}, {class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]}%>
     </div>
 
     <div class="form-group col-2">
@@ -58,18 +58,17 @@
   <div class="row">  
     <div class="form-group col-4">
       <%= form.label :client_id %>
-      <%= form.collection_select(:client_id, @client_clients_for_select, :id, :name,{},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
+      <%= form.collection_select(:client_id, @client_clients_for_select, :id, :name,{:selected => @service.client_id},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
     </div>
-  
   
     <div class="form-group col-4">
       <%= form.label :driver_id %>
-      <%= form.collection_select(:driver_id, @driver_drivers_for_select, :id, :name, {},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
+      <%= form.collection_select(:driver_id, @driver_drivers_for_select, :id, :name, {:selected => @service.driver_id},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
     </div>
 
     <div class="form-group">
       <%= form.label :vehicle_id %>
-      <%= form.collection_select(:vehicle_id, @vehicle_vehicles_for_select, :id, :board, {},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
+      <%= form.collection_select(:vehicle_id, @vehicle_vehicles_for_select, :id, :board, {:selected => @service.vehicle_id},{class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]})%>
     </div>
   </div>
 
