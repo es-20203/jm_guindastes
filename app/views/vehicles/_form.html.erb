@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="row">
-    <div class="form-group col-4">
-      <%= form.label :category %>
-      <%= form.text_field :category, class: ["form-control", "form-control-user"] %>
 
+     <div class="form-group col-4">
+      <%= form.label :category %>
+      <%= form.select :category, ['Truck', 'Articulated crane','Hydraulic crane', 'Flatbed trailer', 'Normal trailer'],{}, {class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]}%>
     </div>
 
     <div class="form-group col-4">
@@ -23,9 +23,9 @@
       <%= form.text_field :board, class: ["form-control", "form-control-user"] %>
     </div>
 
-    <div class="form-group col-4">
+     <div class="form-group col-4">
       <%= form.label :status %>
-      <%= form.text_field :status, class: ["form-control", "form-control-user"] %>
+      <%= form.select :status, ['Available', 'Unavailable'],{}, {class: ["custom-select", "custom-select-sm", "form-control", "form-control-sm"]}%>
     </div>
   </div>
 
