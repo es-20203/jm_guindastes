@@ -4,7 +4,7 @@ And("i am on the service's create page") do
 end
 
 When('i fill status {string}  price {string} data {string} client {string} driver {string} vehicle {string} street: {string}, neighborhood: {string}, number: {string}, zipcode: {string}, city: {string}') do |status, price, data, client, driver, vehicle, street, neighborhood, number, zipcode, city|
-    fill_in 'service[status]', :with => status
+    select status, :from => 'service[status]'
     fill_in 'service[price]', :with => price
     fill_in 'service[data]', :with => data
     select client, :from => 'service[client_id]'
@@ -24,7 +24,7 @@ end
 And('the service with status {string}  price {string} data {string} client {string} driver {string} vehicle {string} street: {string}, neighborhood: {string}, number: {string}, zipcode: {string}, city: {string} exists') do |status, price, data, client, driver, vehicle, street, neighborhood, number, zipcode, city|
     visit "/services/new"
     expect(page).to have_current_path('/services/new')
-    fill_in 'service[status]', :with => status
+    select status, :from => 'service[status]'
     fill_in 'service[price]', :with => price
     fill_in 'service[data]', :with => data
     select client, :from => 'service[client_id]'
